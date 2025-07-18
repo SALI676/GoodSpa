@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dolphin Spa - Your Tranquil Escape</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome for star icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcfbfb; /* Very light background */
-            color: #333; /* Darker text for professionalism */
-            min-height: 100vh; /* Ensure body takes full viewport height */
+            background-color: #fcfbfb;
+            /* Very light background */
+            color: #333;
+            /* Darker text for professionalism */
+            min-height: 100vh;
+            /* Ensure body takes full viewport height */
             display: flex;
             flex-direction: column;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif; /* Elegant font for headings */
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            /* Elegant font for headings */
         }
 
         /* Custom class for a more pronounced, elegant shadow for cards */
@@ -26,32 +39,43 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
         .card-shadow-lg:hover {
-            transform: translateY(-5px); /* Subtle lift on hover */
+            transform: translateY(-5px);
+            /* Subtle lift on hover */
             box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1), 0 6px 12px -3px rgba(0, 0, 0, 0.06);
         }
 
         /* Gradient button for a professional look */
         .btn-gradient {
-            background-image: linear-gradient(to right, #545120 0%, #7d7936 100%); /* Changed to new color */
+            background-image: linear-gradient(to right, #545120 0%, #7d7936 100%);
+            /* Changed to new color */
             transition: all 0.3s ease-in-out;
-            border: none; /* Ensure no default border */
+            border: none;
+            /* Ensure no default border */
         }
+
         .btn-gradient:hover {
-            background-position: right center; /* Moves the gradient on hover */
+            background-position: right center;
+            /* Moves the gradient on hover */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
         .btn-gradient:active {
-            transform: translateY(1px); /* Slight press effect */
+            transform: translateY(1px);
+            /* Slight press effect */
         }
 
         /* Navigation link hover effect */
         .nav-link-hover {
             position: relative;
         }
+
         .nav-link-hover:hover {
-            color: #8c884e; /* Lighter shade for hover */
+            color: #8c884e;
+            /* Lighter shade for hover */
         }
+
         .nav-link-hover::after {
             content: '';
             display: block;
@@ -60,11 +84,13 @@
             background: #8c884e;
             transition: width .3s;
             position: absolute;
-            bottom: -5px; /* Adjust position relative to text */
+            bottom: -5px;
+            /* Adjust position relative to text */
             left: 0;
             right: 0;
             margin: auto;
         }
+
         .nav-link-hover:hover::after {
             width: 100%;
         }
@@ -74,63 +100,88 @@
             font-weight: bold;
             color: #8c884e;
         }
+
         .menu a.active::after {
             content: '';
             display: block;
-            width: 100%; /* Fully active underline */
+            width: 100%;
+            /* Fully active underline */
             height: 3px;
             background-color: #8c884e;
             border-radius: 2px;
             animation: slideIn 0.3s ease forwards;
             position: absolute;
-            bottom: -5px; /* Adjust position relative to text */
+            bottom: -5px;
+            /* Adjust position relative to text */
             left: 0;
             right: 0;
             margin: auto;
         }
+
         @keyframes slideIn {
-            from { width: 0; }
-            to { width: 100%; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         /* Modal styling */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Darker overlay */
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Darker overlay */
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
-            pointer-events: none; /* Allows clicks to pass through when hidden */
+            pointer-events: none;
+            /* Allows clicks to pass through when hidden */
         }
+
         .modal.show {
-            display: flex; /* Use flex to center content */
+            display: flex;
+            /* Use flex to center content */
             opacity: 1;
-            pointer-events: all; /* Enable clicks when shown */
+            pointer-events: all;
+            /* Enable clicks when shown */
         }
+
         .modal-content {
             background-color: #fefefe;
             margin: auto;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* More pronounced shadow */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            /* More pronounced shadow */
             max-width: 500px;
             width: 90%;
             text-align: center;
             transform: translateY(-20px);
             transition: transform 0.3s ease-in-out;
-            position: relative; /* Needed for close button positioning */
+            position: relative;
+            /* Needed for close button positioning */
         }
+
         .modal.show .modal-content {
             transform: translateY(0);
         }
+
         .close-button {
             color: #aaa;
             position: absolute;
@@ -141,6 +192,7 @@
             cursor: pointer;
             transition: color 0.2s;
         }
+
         .close-button:hover,
         .close-button:focus {
             color: #333;
@@ -155,13 +207,16 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #545120; /* Match header color */
+            background-color: #545120;
+            /* Match header color */
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border-radius: 0.5rem;
-            top: 100%; /* Position below the parent link */
-            left: 0; /* Align with parent link */
+            top: 100%;
+            /* Position below the parent link */
+            left: 0;
+            /* Align with parent link */
             padding: 0.5rem 0;
         }
 
@@ -178,24 +233,32 @@
         }
 
         .dropdown-content a:hover {
-            background-color: #7d7936; /* Lighter shade on hover */
+            background-color: #7d7936;
+            /* Lighter shade on hover */
         }
 
         /* Responsive menu specific styles */
         @media (max-width: 767px) {
+
             /* The .menu class for mobile will now be controlled purely by JS toggling 'hidden' */
             .menu a {
                 padding: 0.8rem;
                 margin-bottom: 0.5rem;
-                border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator */
-                width: auto; /* Allow full width for mobile links */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                /* Separator */
+                width: auto;
+                /* Allow full width for mobile links */
             }
+
             .menu a:last-child {
                 border-bottom: none;
             }
+
             .menu-toggle {
-                display: block; /* Show hamburger icon */
+                display: block;
+                /* Show hamburger icon */
             }
+
             /* Hide desktop menu items on mobile */
             #menuListDesktop {
                 display: none;
@@ -203,7 +266,8 @@
 
             /* Mobile Sub-menu Styling */
             .mobile-dropdown-toggle {
-                display: block; /* Ensure the caret is visible */
+                display: block;
+                /* Ensure the caret is visible */
                 cursor: pointer;
             }
 
@@ -211,47 +275,70 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease-out;
-                background-color: rgba(0, 0, 0, 0.2); /* Slightly darker background for sub-menu */
+                background-color: rgba(0, 0, 0, 0.2);
+                /* Slightly darker background for sub-menu */
             }
 
             .mobile-submenu.show {
-                max-height: 200px; /* Adjust as needed for content height */
+                max-height: 200px;
+                /* Adjust as needed for content height */
                 transition: max-height 0.3s ease-in;
             }
 
             .mobile-submenu a {
-                padding-left: 2rem; /* Indent sub-menu items */
+                padding-left: 2rem;
+                /* Indent sub-menu items */
             }
         }
+
         @media (min-width: 768px) {
+
             /* Show desktop menu items on desktop */
             #menuListDesktop {
-                display: flex !important; /* Override `hidden` class */
+                display: flex !important;
+                /* Override `hidden` class */
             }
+
             /* Hide mobile menu toggle and menu on desktop */
-            .menu-toggle, #menuListMobile {
+            .menu-toggle,
+            #menuListMobile {
                 display: none !important;
             }
         }
+
         /* Hero section height for different screen sizes */
         .hero-height {
-            height: 300px; /* Default for small screens */
+            height: 300px;
+            /* Default for small screens */
         }
-        @media (min-width: 640px) { /* sm */
+
+        @media (min-width: 640px) {
+
+            /* sm */
             .hero-height {
-                height: 384px; /* sm:h-96 */
+                height: 384px;
+                /* sm:h-96 */
             }
         }
-        @media (min-width: 768px) { /* md */
+
+        @media (min-width: 768px) {
+
+            /* md */
             .hero-height {
-                height: 450px; /* md:h-[450px] */
+                height: 450px;
+                /* md:h-[450px] */
             }
         }
-        @media (min-width: 1024px) { /* lg */
+
+        @media (min-width: 1024px) {
+
+            /* lg */
             .hero-height {
-                height: 500px; /* lg:h-[500px] */
+                height: 500px;
+                /* lg:h-[500px] */
             }
         }
+
         .loading-spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-left-color: #545120;
@@ -260,12 +347,20 @@
             height: 24px;
             animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .loading-spinner.show {
             display: block;
         }
@@ -273,22 +368,29 @@
         /* Testimonials specific styles */
         .star-rating {
             display: inline-block;
-            direction: rtl; /* Stars right to left */
+            direction: rtl;
+            /* Stars right to left */
         }
+
         .star-rating input[type="radio"] {
             display: none;
         }
+
         .star-rating label {
-            color: #ccc; /* Grey for unselected stars */
+            color: #ccc;
+            /* Grey for unselected stars */
             font-size: 30px;
             padding: 0 5px;
             cursor: pointer;
         }
+
         .star-rating label:hover,
-        .star-rating label:hover ~ label,
-        .star-rating input[type="radio"]:checked ~ label {
-            color: #ffc107; /* Gold for selected and hovered stars */
+        .star-rating label:hover~label,
+        .star-rating input[type="radio"]:checked~label {
+            color: #ffc107;
+            /* Gold for selected and hovered stars */
         }
+
         .rating-bar {
             height: 15px;
             background-color: #e0e0e0;
@@ -296,49 +398,65 @@
             margin-bottom: 5px;
             overflow: hidden;
         }
+
         .rating-fill {
             height: 100%;
-            background-color: #545120; /* Changed to new color */
+            background-color: #545120;
+            /* Changed to new color */
             border-radius: 5px;
             transition: width 0.5s ease-out;
         }
     </style>
 </head>
+
 <body class="antialiased flex flex-col min-h-screen">
 
     <header class="bg-gradient-to-r from-[#545120] to-[#545120] shadow-xl rounded-b-xl mb-12 text-white">
         <nav class="container margin-left px-6 py-5 flex items-center justify-between">
             <div class="flex items-center mb-6 md:mb-0">
-                <img src="https://i.postimg.cc/X7pG7ts0/photo-2025-04-09-13-39-08.jpg" alt="Dolphin Spa Logo" class="h-20 w-20 rounded-full mr-4 shadow-md bg-[#808000] p-0.5">
+                <img src="https://i.postimg.cc/X7pG7ts0/photo-2025-04-09-13-39-08.jpg" alt="Dolphin Spa Logo"
+                    class="h-20 w-20 rounded-full mr-4 shadow-md bg-[#808000] p-0.5">
                 <span class="text-3xl font-extrabold tracking-wider">Dolphin Spa</span>
             </div>
 
             <div class="md:hidden text-3xl cursor-pointer" onclick="toggleMenu()">☰</div>
 
-            <ul class="hidden md:flex flex-wrap justify-center md:justify-end space-x-6 lg:space-x-50 text-lg font-medium" id="menuListDesktop">
-                <li><a href="#homeSection" class="nav-link-hover p-2 tab active" id="homeTab" data-i18n="home">Home</a></li>
+            <ul class="hidden md:flex flex-wrap justify-center md:justify-end space-x-6 lg:space-x-50 text-lg font-medium"
+                id="menuListDesktop">
+                <li><a href="#homeSection" class="nav-link-hover p-2 tab active" id="homeTab" data-i18n="home">Home</a>
+                </li>
                 <li class="dropdown">
-                    <a href="#aboutSection" class="nav-link-hover p-2 tab" id="aboutTab" data-i18n="aboutUs">About Us <span class="text-xs ml-1">&#9662;</span></a>
+                    <a href="#aboutSection" class="nav-link-hover p-2 tab" id="aboutTab" data-i18n="aboutUs">About Us
+                        <span class="text-xs ml-1">&#9662;</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="#aboutSection" class="nav-link-hover tab" id="ourStoryTab" data-i18n="ourStory">Our Story</a></li>
-                        <li><a href="#trainingSection" class="nav-link-hover tab" id="ourTrainingTab" data-i18n="ourTraining">Our Training</a></li>
+                        <li><a href="#aboutSection" class="nav-link-hover tab" id="ourStoryTab" data-i18n="ourStory">Our
+                                Story</a></li>
+                        <li><a href="#trainingSection" class="nav-link-hover tab" id="ourTrainingTab"
+                                data-i18n="ourTraining">Our Training</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#servicesSection" class="nav-link-hover p-2 tab" id="servicesTab" data-i18n="services">Services <span class="text-xs ml-1">&#9662;</span></a>
+                    <a href="#servicesSection" class="nav-link-hover p-2 tab" id="servicesTab"
+                        data-i18n="services">Services <span class="text-xs ml-1">&#9662;</span></a>
                     <ul class="dropdown-content">
-                        <li><a href="#servicesSection" class="nav-link-hover tab" id="allServicesTab" data-i18n="allServices">All Services</a></li>
-                        <li><a href="#pictureTherapySection" class="nav-link-hover tab" id="pictureTherapyTab" data-i18n="therapy">Therapy</a></li>
+                        <li><a href="#servicesSection" class="nav-link-hover tab" id="allServicesTab"
+                                data-i18n="allServices">All Services</a></li>
+                        <li><a href="#pictureTherapySection" class="nav-link-hover tab" id="pictureTherapyTab"
+                                data-i18n="therapy">Therapy</a></li>
                     </ul>
                 </li>
-                <li><a href="#viewBookingsSection" class="nav-link-hover p-2 tab" id="viewBookingsTab" data-i18n="yourBookings">Your Bookings</a></li>
-                <li><a href="#testimonialsSection" class="nav-link-hover p-2 tab" id="testimonialsTab" data-i18n="testimonials">Testimonials</a></li>
-                <li><a href="#contactSection" class="nav-link-hover p-2 tab" id="contactTab" data-i18n="contactUs">Contact Us</a></li>
+                <li><a href="#viewBookingsSection" class="nav-link-hover p-2 tab" id="viewBookingsTab"
+                        data-i18n="yourBookings">Your Bookings</a></li>
+                <li><a href="#testimonialsSection" class="nav-link-hover p-2 tab" id="testimonialsTab"
+                        data-i18n="testimonials">Testimonials</a></li>
+                <li><a href="#contactSection" class="nav-link-hover p-2 tab" id="contactTab"
+                        data-i18n="contactUs">Contact Us</a></li>
                 <!-- Language Selector for Desktop -->
                 <li>
                     <div class="flex items-center">
                         <label for="languageSelectDesktop" class="sr-only" data-i18n="language">Language</label>
-                        <select id="languageSelectDesktop" class="bg-[#545120] text-white p-0.5 rounded-md focus:outline-none focus:ring-2 focus:ring-[#545120] cursor-pointer">
+                        <select id="languageSelectDesktop"
+                            class="bg-[#545120] text-white p-0.5 rounded-md focus:outline-none focus:ring-2 focus:ring-[#545120] cursor-pointer">
                             <option value="en">English</option>
                             <option value="km">ភាសាខ្មែរ</option>
                         </select>
@@ -346,36 +464,50 @@
                 </li>
             </ul>
 
-            <ul class="menu hidden md:hidden bg-[#545120] text-white shadow-lg rounded-b-xl py-4 transition-all duration-300 ease-in-out z-50 right-0 absolute w-full left-0 top-20" id="menuListMobile">
-                <li><a href="#homeSection" class="block px-6 py-3 nav-link-hover tab active" id="homeTabMobile" data-i18n="home">Home</a></li>
+            <ul class="menu hidden md:hidden bg-[#545120] text-white shadow-lg rounded-b-xl py-4 transition-all duration-300 ease-in-out z-50 right-0 absolute w-full left-0 top-20"
+                id="menuListMobile">
+                <li><a href="#homeSection" class="block px-6 py-3 nav-link-hover tab active" id="homeTabMobile"
+                        data-i18n="home">Home</a></li>
                 <li>
-                    <div class="flex justify-between items-center px-6 py-3 nav-link-hover tab" onclick="toggleMobileSubmenu(event, 'mobileAboutUsSubmenu')">
-                        <a href="#aboutSection" class="w-full text-left p-0 m-0" id="aboutTabMobile" data-i18n="aboutUs">About Us</a>
+                    <div class="flex justify-between items-center px-6 py-3 nav-link-hover tab"
+                        onclick="toggleMobileSubmenu(event, 'mobileAboutUsSubmenu')">
+                        <a href="#aboutSection" class="w-full text-left p-0 m-0" id="aboutTabMobile"
+                            data-i18n="aboutUs">About Us</a>
                         <span class="mobile-dropdown-toggle text-xl">&#9662;</span>
                     </div>
                     <ul class="mobile-submenu" id="mobileAboutUsSubmenu">
-                        <li><a href="#aboutSection" class="block px-6 py-3 nav-link-hover tab text-base" id="ourStoryTabMobile" data-i18n="ourStory">Our Story</a></li>
-                        <li><a href="#trainingSection" class="block px-6 py-3 nav-link-hover tab text-base" id="ourTrainingTabMobile" data-i18n="ourTraining">Our Training</a></li>
+                        <li><a href="#aboutSection" class="block px-6 py-3 nav-link-hover tab text-base"
+                                id="ourStoryTabMobile" data-i18n="ourStory">Our Story</a></li>
+                        <li><a href="#trainingSection" class="block px-6 py-3 nav-link-hover tab text-base"
+                                id="ourTrainingTabMobile" data-i18n="ourTraining">Our Training</a></li>
                     </ul>
                 </li>
                 <li>
-                    <div class="flex justify-between items-center px-6 py-3 nav-link-hover tab" onclick="toggleMobileSubmenu(event, 'mobileServicesSubmenu')">
-                        <a href="#servicesSection" class="w-full text-left p-0 m-0" id="servicesTabMobile" data-i18n="services">Services</a>
+                    <div class="flex justify-between items-center px-6 py-3 nav-link-hover tab"
+                        onclick="toggleMobileSubmenu(event, 'mobileServicesSubmenu')">
+                        <a href="#servicesSection" class="w-full text-left p-0 m-0" id="servicesTabMobile"
+                            data-i18n="services">Services</a>
                         <span class="mobile-dropdown-toggle text-xl">&#9662;</span>
                     </div>
                     <ul class="mobile-submenu" id="mobileServicesSubmenu">
-                        <li><a href="#servicesSection" class="block px-6 py-3 nav-link-hover tab text-base" id="allServicesTabMobile" data-i18n="allServices">All Services</a></li>
-                        <li><a href="#pictureTherapySection" class="block px-6 py-3 nav-link-hover tab text-base" id="pictureTherapyTabMobile" data-i18n="therapy">Therapy</a></li>
+                        <li><a href="#servicesSection" class="block px-6 py-3 nav-link-hover tab text-base"
+                                id="allServicesTabMobile" data-i18n="allServices">All Services</a></li>
+                        <li><a href="#pictureTherapySection" class="block px-6 py-3 nav-link-hover tab text-base"
+                                id="pictureTherapyTabMobile" data-i18n="therapy">Therapy</a></li>
                     </ul>
                 </li>
-                <li><a href="#viewBookingsSection" class="block px-6 py-3 nav-link-hover tab text-lg" id="viewBookingsTabMobile" data-i18n="yourBookings">Your Bookings</a></li>
-                <li><a href="#testimonialsSection" class="block px-6 py-3 nav-link-hover tab text-lg" id="testimonialsTabMobile" data-i18n="testimonials">Testimonials</a></li>
-                <li><a href="#contactSection" class="block px-6 py-3 nav-link-hover tab text-lg" id="contactTabMobile" data-i18n="contactUs">Contact Us</a></li>
+                <li><a href="#viewBookingsSection" class="block px-6 py-3 nav-link-hover tab text-lg"
+                        id="viewBookingsTabMobile" data-i18n="yourBookings">Your Bookings</a></li>
+                <li><a href="#testimonialsSection" class="block px-6 py-3 nav-link-hover tab text-lg"
+                        id="testimonialsTabMobile" data-i18n="testimonials">Testimonials</a></li>
+                <li><a href="#contactSection" class="block px-6 py-3 nav-link-hover tab text-lg" id="contactTabMobile"
+                        data-i18n="contactUs">Contact Us</a></li>
                 <!-- Language Selector for Mobile -->
                 <li>
                     <div class="flex items-center px-6 py-3">
                         <label for="languageSelectMobile" class="sr-only" data-i18n="language">Language</label>
-                        <select id="languageSelectMobile" class="bg-[#545120] text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8c884e] cursor-pointer w-full">
+                        <select id="languageSelectMobile"
+                            class="bg-[#545120] text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8c884e] cursor-pointer w-full">
                             <option value="en">English</option>
                             <option value="km">ភាសាខ្មែរ</option>
                         </select>
@@ -388,16 +520,21 @@
     <main class="flex-grow">
         <section id="homeSection" class="section container mx-auto px-6 mb-16 block">
             <div class="relative w-full hero-height overflow-hidden rounded-xl shadow-2xl">
-                <img src="https://i.postimg.cc/nzFM8WXg/Balancing-Remedies.webp" alt="Luxurious Spa Interior" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                <img src="https://i.postimg.cc/nzFM8WXg/Balancing-Remedies.webp" alt="Luxurious Spa Interior"
+                    class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-2xl mb-4 animate-fade-in-up" data-i18n="homeHeading">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-2xl mb-4 animate-fade-in-up"
+                        data-i18n="homeHeading">
                         Find Your Inner Calm
                     </h1>
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl drop-shadow-lg animate-fade-in-up delay-200" data-i18n="homeSubheading">
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl drop-shadow-lg animate-fade-in-up delay-200"
+                        data-i18n="homeSubheading">
                         Immerse yourself in serenity with our exquisite spa treatments.
                     </p>
-                    <button class="mt-8 px-9 py-4 text-lg font-semibold text-white rounded-full btn-gradient shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#8c884e] transition-all duration-300" onclick="showSection('servicesSection');" data-i18n="exploreServicesBtn">
+                    <button
+                        class="mt-8 px-9 py-4 text-lg font-semibold text-white rounded-full btn-gradient shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#8c884e] transition-all duration-300"
+                        onclick="showSection('servicesSection');" data-i18n="exploreServicesBtn">
                         Explore Services
                     </button>
                 </div>
@@ -408,15 +545,26 @@
             <div class="bg-white p-8 rounded-xl card-shadow-lg max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl font-bold text-[#545120] mb-6" data-i18n="aboutSpaHeading">About Dolphin Spa</h2>
                 <p class="text-lg text-gray-700 leading-relaxed mb-6" data-i18n="aboutSpaPara1">
-                    Welcome to Dolphin Spa, where tranquility meets rejuvenation. Nestled in the heart of Aqua City, our spa is a sanctuary designed to transport you away from the everyday hustle and into a realm of pure relaxation. We are inspired by the serene beauty and grace of dolphins, aiming to bring that same sense of peace and vitality to each of our cherished guests.
+                    Welcome to Dolphin Spa, where tranquility meets rejuvenation. Nestled in the heart of Aqua City, our
+                    spa is a sanctuary designed to transport you away from the everyday hustle and into a realm of pure
+                    relaxation. We are inspired by the serene beauty and grace of dolphins, aiming to bring that same
+                    sense of peace and vitality to each of our cherished guests.
                 </p>
                 <p class="text-lg text-gray-700 leading-relaxed mb-6" data-i18n="aboutSpaPara2">
-                    Our philosophy centers on holistic well-being, believing that true relaxation encompasses mind, body, and spirit. Our team of highly skilled and compassionate therapists is dedicated to providing personalized treatments using only the finest natural products and techniques. From traditional massages to advanced therapeutic rituals, every service is crafted to restore balance and enhance your natural radiance.
+                    Our philosophy centers on holistic well-being, believing that true relaxation encompasses mind,
+                    body, and spirit. Our team of highly skilled and compassionate therapists is dedicated to providing
+                    personalized treatments using only the finest natural products and techniques. From traditional
+                    massages to advanced therapeutic rituals, every service is crafted to restore balance and enhance
+                    your natural radiance.
                 </p>
                 <p class="text-lg text-gray-700 leading-relaxed" data-i18n="aboutSpaPara3">
-                    Step into Dolphin Spa and embark on a journey of sensory delight. Allow us to guide you towards a state of profound calm and renewed energy. Your well-being is our passion, and we look forward to welcoming you to our oasis of tranquility.
+                    Step into Dolphin Spa and embark on a journey of sensory delight. Allow us to guide you towards a
+                    state of profound calm and renewed energy. Your well-being is our passion, and we look forward to
+                    welcoming you to our oasis of tranquility.
                 </p>
-                <button class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" onclick="showSection('contactSection');" data-i18n="contactUsBtn">
+                <button
+                    class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    onclick="showSection('contactSection');" data-i18n="contactUsBtn">
                     Contact Us to Learn More
                 </button>
             </div>
@@ -426,34 +574,50 @@
             <div class="bg-white p-8 rounded-xl card-shadow-lg max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl font-bold text-[#545120] mb-6" data-i18n="ourTraining">Our Training</h2>
                 <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                    At Dolphin Spa, our commitment to excellence begins with rigorous and continuous training for all our therapists. We believe that mastery of therapeutic techniques, combined with a deep understanding of client well-being, is paramount to delivering an unparalleled spa experience.
+                    At Dolphin Spa, our commitment to excellence begins with rigorous and continuous training for all
+                    our therapists. We believe that mastery of therapeutic techniques, combined with a deep
+                    understanding of client well-being, is paramount to delivering an unparalleled spa experience.
                 </p>
                 <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                    Our training programs are comprehensive, covering a wide range of traditional and modern spa treatments, advanced massage modalities, aromatherapy, and client communication. Each therapist undergoes extensive hands-on practice, theoretical instruction, and regular assessments to ensure they meet our high standards of professionalism and skill.
+                    Our training programs are comprehensive, covering a wide range of traditional and modern spa
+                    treatments, advanced massage modalities, aromatherapy, and client communication. Each therapist
+                    undergoes extensive hands-on practice, theoretical instruction, and regular assessments to ensure
+                    they meet our high standards of professionalism and skill.
                 </p>
                 <p class="text-lg text-gray-700 leading-relaxed">
-                    We also emphasize the importance of holistic care, encouraging our team to cultivate mindfulness and empathy in their approach. This ensures that every touch not only addresses physical needs but also contributes to the emotional and mental rejuvenation of our guests. Our therapists are continuously learning, bringing the latest innovations and best practices to your treatment.
+                    We also emphasize the importance of holistic care, encouraging our team to cultivate mindfulness and
+                    empathy in their approach. This ensures that every touch not only addresses physical needs but also
+                    contributes to the emotional and mental rejuvenation of our guests. Our therapists are continuously
+                    learning, bringing the latest innovations and best practices to your treatment.
                 </p>
-                <button class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" onclick="showSection('aboutSection');" data-i18n="backBtn">
+                <button
+                    class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    onclick="showSection('aboutSection');" data-i18n="backBtn">
                     Back to About Us
                 </button>
             </div>
         </section>
 
         <section id="servicesSection" class="section container mx-auto px-6 py-10 hidden">
-            <h2 class="text-4xl font-bold text-center text-[#545120] mb-10" data-i18n="servicesHeading">Our Divine Services</h2>
+            <h2 class="text-4xl font-bold text-center text-[#545120] mb-10" data-i18n="servicesHeading">Our Divine
+                Services</h2>
             <div id="servicesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
+            </div>
         </section>
 
         <section id="detailSection" class="section container mx-auto px-6 py-10 hidden">
-            <div id="serviceDetail" class="bg-white p-8 rounded-xl card-shadow-lg flex flex-col lg:flex-row items-center lg:items-start gap-8">
-                </div>
+            <div id="serviceDetail"
+                class="bg-white p-8 rounded-xl card-shadow-lg flex flex-col lg:flex-row items-center lg:items-start gap-8">
+            </div>
             <div class="flex justify-center space-x-4 mt-8">
-                <button class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" id="backBtn" data-i18n="backToServicesBtn">
+                <button
+                    class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    id="backBtn" data-i18n="backToServicesBtn">
                     Back to Services
                 </button>
-                <button class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" id="bookNowBtn" data-i18n="bookThisServiceBtn">
+                <button
+                    class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    id="bookNowBtn" data-i18n="bookThisServiceBtn">
                     Book This Service
                 </button>
             </div>
@@ -461,36 +625,52 @@
 
         <section id="bookingFormSection" class="section container mx-auto px-6 py-10 hidden">
             <div class="bg-white p-8 rounded-xl card-shadow-lg max-w-2xl mx-auto">
-                <h2 class="text-3xl font-semibold text-[#545120] mb-6 text-center" data-i18n="bookServiceHeading">Book Your Service</h2>
+                <h2 class="text-3xl font-semibold text-[#545120] mb-6 text-center" data-i18n="bookServiceHeading">Book
+                    Your Service</h2>
                 <form id="bookingForm">
                     <div class="mb-4">
-                        <label for="serviceName" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="selectedServiceLabel">Selected Service</label>
-                        <input type="text" id="serviceName" name="serviceName" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent bg-gray-100" readonly>
+                        <label for="serviceName" class="block text-gray-700 text-sm font-bold mb-2"
+                            data-i18n="selectedServiceLabel">Selected Service</label>
+                        <input type="text" id="serviceName" name="serviceName"
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent bg-gray-100"
+                            readonly>
                     </div>
                     <!-- Therapy Name Selection Field for Booking Form - Made Visible and functional -->
                     <div class="mb-4" id="therapyNameGroup">
-                        <label for="therapyName" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="selectTherapyLabel">Select Specific Therapy:</label>
-                        <select id="therapyName" name="therapyName" class="shadow border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
+                        <label for="therapyName" class="block text-gray-700 text-sm font-bold mb-2"
+                            data-i18n="selectTherapyLabel">Select Specific Therapy:</label>
+                        <select id="therapyName" name="therapyName"
+                            class="shadow border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
                             <!-- Options will be dynamically populated by JavaScript -->
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="yourNameLabel">Your Name</label>
-                        <input type="text" id="name" name="name" required class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2"
+                            data-i18n="yourNameLabel">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
                     </div>
                     <div class="mb-4">
-                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="phoneNumberLabel">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2"
+                            data-i18n="phoneNumberLabel">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
                     </div>
                     <div class="mb-6">
-                        <label for="datetime" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="bookingTimeLabel">Preferred Booking Time</label>
-                        <input type="datetime-local" id="datetime" name="datetime" required class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
+                        <label for="datetime" class="block text-gray-700 text-sm font-bold mb-2"
+                            data-i18n="bookingTimeLabel">Preferred Booking Time</label>
+                        <input type="datetime-local" id="datetime" name="datetime" required
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent">
                     </div>
                     <div class="flex justify-between items-center">
-                        <button type="submit" class="px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" data-i18n="confirmBookingBtn">
+                        <button type="submit"
+                            class="px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                            data-i18n="confirmBookingBtn">
                             Confirm Booking
                         </button>
-                        <button type="button" class="px-8 py-3 bg-gray-300 text-gray-800 font-semibold rounded-full shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75" id="backFromBookingBtn" data-i18n="backBtn">
+                        <button type="button"
+                            class="px-8 py-3 bg-gray-300 text-gray-800 font-semibold rounded-full shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75"
+                            id="backFromBookingBtn" data-i18n="backBtn">
                             Back
                         </button>
                     </div>
@@ -499,69 +679,89 @@
         </section>
 
         <section id="viewBookingsSection" class="section container mx-auto px-6 py-10 hidden">
-            <h2 class="text-4xl font-bold text-center text-[#545120] mb-8" data-i18n="yourBookingsHeading">Your Bookings</h2>
+            <h2 class="text-4xl font-bold text-center text-[#545120] mb-8" data-i18n="yourBookingsHeading">Your Bookings
+            </h2>
             <ul id="bookingList" class="space-y-6 max-w-3xl mx-auto">
-                </ul>
+            </ul>
             <div class="flex justify-center mt-8">
-                <button class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" id="backToHomeBtn" data-i18n="backToHomeBtn">
+                <button
+                    class="px-7 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    id="backToHomeBtn" data-i18n="backToHomeBtn">
                     Back to Home
                 </button>
             </div>
         </section>
 
         <section id="pictureTherapySection" class="section container mx-auto px-6 py-10 hidden">
-            <h2 class="text-4xl font-bold text-center text-[#545120] mb-10" data-i18n="therapistsHeading">Meet our professional therapists</h2>
+            <h2 class="text-4xl font-bold text-center text-[#545120] mb-10" data-i18n="therapistsHeading">Meet our
+                professional therapists</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <img src="https://i.postimg.cc/L4ZZsTB5/1.jpg" alt="Therapy Session 1" class="w-full h-56 object-cover">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <img src="https://i.postimg.cc/L4ZZsTB5/1.jpg" alt="Therapy Session 1"
+                        class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Mr.Duong</h3>
                         <!-- <p class="text-gray-600 text-sm">A snapshot of a calming therapy session, focusing on mindfulness and inner peace.</p> -->
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <img src="https://i.postimg.cc/fTnSS9BK/3.jpg" alt="Therapy Session 2" class="w-full h-56 object-cover">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <img src="https://i.postimg.cc/fTnSS9BK/3.jpg" alt="Therapy Session 2"
+                        class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Mr.Sali</h3>
                         <!-- <p class="text-gray-600 text-sm">Capturing the quiet strength found in moments of deep reflection and understanding.</p> -->
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <img src="https://i.postimg.cc/J4NDNzFW/2.jpg" alt="Therapy Session 3" class="w-full h-56 object-cover">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <img src="https://i.postimg.cc/J4NDNzFW/2.jpg" alt="Therapy Session 3"
+                        class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Mr.Rozy</h3>
                         <!-- <p class="text-gray-600 text-sm">Illustrating the supportive environment created for personal growth and healing.</p> -->
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <img src="https://i.postimg.cc/pr0v6zG3/pexels-karolina-grabowska-4473400.jpg" alt="Therapy Session 4" class="w-full h-56 object-cover">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <img src="https://i.postimg.cc/pr0v6zG3/pexels-karolina-grabowska-4473400.jpg"
+                        alt="Therapy Session 4" class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Mr.Rozy</h3>
                         <!-- <p class="text-gray-600 text-sm">Images depicting the empowering journey of individuals engaging in therapeutic practices.</p> -->
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <img src="https://i.postimg.cc/pr0v6zG3/pexels-karolina-grabowska-4473400.jpg" alt="Therapy Session 5" class="w-full h-56 object-cover">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <img src="https://i.postimg.cc/pr0v6zG3/pexels-karolina-grabowska-4473400.jpg"
+                        alt="Therapy Session 5" class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Ms.SreyNeth</h3>
                         <!-- <p class="text-gray-600 text-sm">Visuals of peaceful meditation, a core component of our therapy to foster inner calm.</p> -->
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
+                <div
+                    class="bg-white rounded-xl overflow-hidden card-shadow-lg transform transition-transform duration-300 hover:scale-105">
                     <!-- Updated broken image URL with a placeholder -->
-                    <img src="https://placehold.co/400x300/a0c4ff/001d3d?text=Therapy+Image" alt="Therapy Session 6" class="w-full h-56 object-cover">
+                    <img src="https://placehold.co/400x300/a0c4ff/001d3d?text=Therapy+Image" alt="Therapy Session 6"
+                        class="w-full h-56 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-[#545120] mb-2">Ms.SreyOun</h3>
                         <!-- <p class="text-gray-600 text-sm">Showcasing the comprehensive approach to healing, integrating various therapeutic methods.</p> -->
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-10">
                 <p class="text-lg text-gray-700 leading-relaxed mb-6" data-i18n="therapyGalleryText">
-                    Our Picture Therapy gallery showcases moments of calm, reflection, and growth experienced within our therapeutic environment. These images are curated to inspire peace and highlight the journey towards mental well-being.
+                    Our Picture Therapy gallery showcases moments of calm, reflection, and growth experienced within our
+                    therapeutic environment. These images are curated to inspire peace and highlight the journey towards
+                    mental well-being.
                 </p>
-                <button class="mt-4 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" onclick="showSection('contactSection');" data-i18n="learnMoreTherapiesBtn">
+                <button
+                    class="mt-4 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    onclick="showSection('contactSection');" data-i18n="learnMoreTherapiesBtn">
                     Learn More About Our Therapies
                 </button>
             </div>
@@ -572,39 +772,63 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Left Column: Review Submission Form -->
                     <div>
-                        <h2 class="text-3xl font-bold text-[#545120] mb-6" data-i18n="submitReviewHeading">Please Comment and Rate Us</h2>
+                        <h2 class="text-3xl font-bold text-[#545120] mb-6" data-i18n="submitReviewHeading">Please
+                            Comment and Rate Us</h2>
                         <form id="reviewForm" class="space-y-4">
                             <div>
-                                <label for="reviewerName" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="yourNameLabel">Your Name</label>
-                                <input type="text" id="reviewerName" name="reviewerName" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent" placeholder="Tell us your name" required>
+                                <label for="reviewerName" class="block text-gray-700 text-sm font-bold mb-2"
+                                    data-i18n="yourNameLabel">Your Name</label>
+                                <input type="text" id="reviewerName" name="reviewerName"
+                                    class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent"
+                                    placeholder="Tell us your name" required>
                             </div>
                             <div>
-                                <label for="reviewerEmail" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="yourEmailLabel">Your Email</label>
-                                <input type="email" id="reviewerEmail" name="reviewerEmail" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent" placeholder="Tell us your email" required>
+                                <label for="reviewerEmail" class="block text-gray-700 text-sm font-bold mb-2"
+                                    data-i18n="yourEmailLabel">Your Email</label>
+                                <input type="email" id="reviewerEmail" name="reviewerEmail"
+                                    class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent"
+                                    placeholder="Tell us your email" required>
                             </div>
                             <div>
-                                <label for="reviewTitle" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="reviewTitleLabel">Title of your review</label>
-                                <input type="text" id="reviewTitle" name="reviewTitle" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent" placeholder="Summarize your review or highlight an interesting detail" required>
+                                <label for="reviewTitle" class="block text-gray-700 text-sm font-bold mb-2"
+                                    data-i18n="reviewTitleLabel">Title of your review</label>
+                                <input type="text" id="reviewTitle" name="reviewTitle"
+                                    class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent"
+                                    placeholder="Summarize your review or highlight an interesting detail" required>
                             </div>
                             <div>
-                                <label for="reviewText" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="yourReviewLabel">Your Review</label>
-                                <textarea id="reviewText" name="reviewText" rows="4" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent" placeholder="Tell people your review" required></textarea>
+                                <label for="reviewText" class="block text-gray-700 text-sm font-bold mb-2"
+                                    data-i18n="yourReviewLabel">Your Review</label>
+                                <textarea id="reviewText" name="reviewText" rows="4"
+                                    class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:border-transparent"
+                                    placeholder="Tell people your review" required></textarea>
                             </div>
                             <div class="flex items-center mb-4">
-                                <input type="checkbox" id="genuineOpinion" name="genuineOpinion" class="form-checkbox h-5 w-5 text-[#545120] rounded" required>
-                                <label for="genuineOpinion" class="ml-2 text-gray-700 text-sm" data-i18n="genuineOpinionText">This review is based on my own experience and is my genuine opinion.</label>
+                                <input type="checkbox" id="genuineOpinion" name="genuineOpinion"
+                                    class="form-checkbox h-5 w-5 text-[#545120] rounded" required>
+                                <label for="genuineOpinion" class="ml-2 text-gray-700 text-sm"
+                                    data-i18n="genuineOpinionText">This review is based on my own experience and is my
+                                    genuine opinion.</label>
                             </div>
                             <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" data-i18n="yourRatingLabel">Your overall rating</label>
+                                <label class="block text-gray-700 text-sm font-bold mb-2"
+                                    data-i18n="yourRatingLabel">Your overall rating</label>
                                 <div class="star-rating flex justify-center">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent"><i class="fa fa-star"></i></label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good"><i class="fa fa-star"></i></label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Average"><i class="fa fa-star"></i></label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor"><i class="fa fa-star"></i></label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible"><i class="fa fa-star"></i></label>
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
+                                        title="Excellent"><i class="fa fa-star"></i></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                                        title="Very Good"><i class="fa fa-star"></i></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                                        title="Average"><i class="fa fa-star"></i></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                                        title="Poor"><i class="fa fa-star"></i></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                                        title="Terrible"><i class="fa fa-star"></i></label>
                                 </div>
                             </div>
-                            <button type="submit" class="px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75 w-full" data-i18n="submitReviewBtn">
+                            <button type="submit"
+                                class="px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75 w-full"
+                                data-i18n="submitReviewBtn">
                                 Submit your review
                             </button>
                         </form>
@@ -614,50 +838,67 @@
                     <div>
                         <h2 class="text-3xl font-bold text-[#545120] mb-6" data-i18n="reviewResultsHeading">Results</h2>
                         <div class="mb-6 bg-[#fcfbfb] p-6 rounded-lg shadow-inner">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-i18n="overallRatingText">Your overall rating</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-i18n="overallRatingText">Your
+                                overall rating</h3>
                             <div class="flex items-center justify-center mb-4">
-                                <span id="overallRatingDisplay" class="text-5xl font-bold text-[#545120] mr-2">0.0</span>
+                                <span id="overallRatingDisplay"
+                                    class="text-5xl font-bold text-[#545120] mr-2">0.0</span>
                                 <div id="overallStarsDisplay" class="text-yellow-500 text-4xl">
-                                    <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
+                                        class="far fa-star"></i><i class="far fa-star"></i>
                                 </div>
                             </div>
                             <!-- MODIFIED LINE BELOW: Removed data-i18n from p and added new spans with data-i18n -->
                             <p class="text-gray-600 mb-4">
-                                <span id="totalReviewsCount">0.0</span> <span data-i18n="outOfFiveStarsStaticText">out of 5 stars</span> (<span data-i18n="basedOnReviewsStaticText">based on</span> <span id="numReviews">0</span> <span data-i18n="reviewsWordStaticText">reviews</span>)
+                                <span id="totalReviewsCount">0.0</span> <span data-i18n="outOfFiveStarsStaticText">out
+                                    of 5 stars</span> (<span data-i18n="basedOnReviewsStaticText">based on</span> <span
+                                    id="numReviews">0</span> <span data-i18n="reviewsWordStaticText">reviews</span>)
                             </p>
 
                             <div class="space-y-2 text-left">
                                 <div class="flex items-center">
                                     <span class="w-20 text-gray-700" data-i18n="excellentRating">Excellent</span>
-                                    <div class="rating-bar flex-grow mx-2"><div id="barExcellent" class="rating-fill" style="width: 0%;"></div></div>
+                                    <div class="rating-bar flex-grow mx-2">
+                                        <div id="barExcellent" class="rating-fill" style="width: 0%;"></div>
+                                    </div>
                                     <span id="percentExcellent" class="w-10 text-right text-gray-700">0%</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-20 text-gray-700" data-i18n="veryGoodRating">Very good</span>
-                                    <div class="rating-bar flex-grow mx-2"><div id="barVeryGood" class="rating-fill" style="width: 0%;"></div></div>
+                                    <div class="rating-bar flex-grow mx-2">
+                                        <div id="barVeryGood" class="rating-fill" style="width: 0%;"></div>
+                                    </div>
                                     <span id="percentVeryGood" class="w-10 text-right text-gray-700">0%</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-20 text-gray-700" data-i18n="averageRating">Average</span>
-                                    <div class="rating-bar flex-grow mx-2"><div id="barAverage" class="rating-fill" style="width: 0%;"></div></div>
+                                    <div class="rating-bar flex-grow mx-2">
+                                        <div id="barAverage" class="rating-fill" style="width: 0%;"></div>
+                                    </div>
                                     <span id="percentAverage" class="w-10 text-right text-gray-700">0%</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-20 text-gray-700" data-i18n="poorRating">Poor</span>
-                                    <div class="rating-bar flex-grow mx-2"><div id="barPoor" class="rating-fill" style="width: 0%;"></div></div>
+                                    <div class="rating-bar flex-grow mx-2">
+                                        <div id="barPoor" class="rating-fill" style="width: 0%;"></div>
+                                    </div>
                                     <span id="percentPoor" class="w-10 text-right text-gray-700">0%</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-20 text-gray-700" data-i18n="terribleRating">Terrible</span>
-                                    <div class="rating-bar flex-grow mx-2"><div id="barTerrible" class="rating-fill" style="width: 0%;"></div></div>
+                                    <div class="rating-bar flex-grow mx-2">
+                                        <div id="barTerrible" class="rating-fill" style="width: 0%;"></div>
+                                    </div>
                                     <span id="percentTerrible" class="w-10 text-right text-gray-700">0%</span>
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="text-2xl font-bold text-[#545120] mb-4" data-i18n="yourReviewsHeading">Your Review</h3>
+                        <h3 class="text-2xl font-bold text-[#545120] mb-4" data-i18n="yourReviewsHeading">Your Review
+                        </h3>
                         <div id="reviewsList" class="space-y-4">
-                            <p id="noReviewsMessage" class="text-gray-600 text-center" data-i18n="noReviewsYet">There are no reviews yet. Be the first one to write one.</p>
+                            <p id="noReviewsMessage" class="text-gray-600 text-center" data-i18n="noReviewsYet">There
+                                are no reviews yet. Be the first one to write one.</p>
                             <!-- Reviews will be dynamically loaded here -->
                         </div>
                     </div>
@@ -672,11 +913,28 @@
                     Have questions or need assistance? Our friendly team is here to help you.
                 </p>
                 <div class="space-y-4 text-left inline-block">
-                    <p class="flex items-center text-xl text-gray-800" data-i18n="phoneInfo"><svg class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" clip-rule="evenodd"></path></svg> Phone: 070720265 & 012318832</p>
-                    <p class="flex items-center text-xl text-gray-800" data-i18n="emailInfo"><svg class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" clip-rule="evenodd"></path></svg> Email: contact@dolphinspa.com</p>
-                    <p class="flex items-center text-xl text-gray-800" data-i18n="addressInfo"><svg class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 1.586l-4 4V14a1 1 0 001 1h2a1 1 0 001-1V5.586l-4-4zM2 6a2 2 0 012-2h3a1 1 0 011 1v1a1 1 0 01-1 1H4a1 1 0 00-1 1v3a1 1 0 001 1h2.586l.707.707A1 1 0 017 14h6a1 1 0 01.707-.293l.707-.707H16a1 1 0 001-1V9a1 1 0 00-1-1h-3a1 1 0 01-1-1V5a1 1 0 011-1h3a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> Address: 789 Ocean Drive, Aqua City, State 12345</p>
+                    <p class="flex items-center text-xl text-gray-800" data-i18n="phoneInfo"><svg
+                            class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                                clip-rule="evenodd"></path>
+                        </svg> Phone: 070720265 & 012318832</p>
+                    <p class="flex items-center text-xl text-gray-800" data-i18n="emailInfo"><svg
+                            class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                                clip-rule="evenodd"></path>
+                        </svg> Email: contact@dolphinspa.com</p>
+                    <p class="flex items-center text-xl text-gray-800" data-i18n="addressInfo"><svg
+                            class="w-6 h-6 mr-3 text-[#545120]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M12 1.586l-4 4V14a1 1 0 001 1h2a1 1 0 001-1V5.586l-4-4zM2 6a2 2 0 012-2h3a1 1 0 011 1v1a1 1 0 01-1 1H4a1 1 0 00-1 1v3a1 1 0 001 1h2.586l.707.707A1 1 0 017 14h6a1 1 0 01.707-.293l.707-.707H16a1 1 0 001-1V9a1 1 0 00-1-1h-3a1 1 0 01-1-1V5a1 1 0 011-1h3a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                clip-rule="evenodd"></path>
+                        </svg> Address: 789 Ocean Drive, Aqua City, State 12345</p>
                 </div>
-                <button class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75" data-i18n="sendMessageBtn">
+                <button
+                    class="mt-8 px-8 py-3 btn-gradient text-white font-semibold rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7d7936] focus:ring-opacity-75"
+                    data-i18n="sendMessageBtn">
                     Send us a Message
                 </button>
             </div>
@@ -694,22 +952,37 @@
             <div>
                 <h4 class="text-xl font-bold text-white mb-4" data-i18n="quickLinksHeading">Quick Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="ourStoryLink">Our Story</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="giftCertificatesLink">Gift Certificates</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="careerOpportunitiesLink">Career Opportunities</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                            data-i18n="ourStoryLink">Our Story</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                            data-i18n="giftCertificatesLink">Gift Certificates</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                            data-i18n="careerOpportunitiesLink">Career Opportunities</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-xl font-bold text-white mb-4" data-i18n="connectWithUsHeading">Connect With Us</h4>
                 <div class="flex justify-center md:justify-start space-x-4 mt-4">
                     <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07c1.378.062 2.396.288 3.232.654a4.99 4.99 0 011.772 1.153 4.99 4.99 0 011.153 1.772c.366.836.592 1.854.654 3.232.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.378-.288 2.396-.654 3.232a4.99 4.99 0 01-1.153 1.772 4.99 4.99 0 01-1.772 1.153c-.836.366-1.854.592-3.232.654-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.378-.062-2.396-.288-3.232-.654a4.99 4.99 0 01-1.772-1.153 4.99 4.99 0 01-1.153-1.772c-.366-.836-.592-1.854-.654-3.232-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.378.288-2.396.654-3.232a4.99 4.99 0 011.153-1.772A4.99 4.99 0 015.65.917c.836-.366 1.854-.592 3.232-.654C10.354 2.012 10.734 2 12 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010 6z"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07c1.378.062 2.396.288 3.232.654a4.99 4.99 0 011.772 1.153 4.99 4.99 0 011.153 1.772c.366.836.592 1.854.654 3.232.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.378-.288 2.396-.654 3.232a4.99 4.99 0 01-1.153 1.772 4.99 4.99 0 01-1.772 1.153c-.836.366-1.854.592-3.232.654-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.378-.062-2.396-.288-3.232-.654a4.99 4.99 0 01-1.772-1.153 4.99 4.99 0 01-1.153-1.772c-.366-.836-.592-1.854-.654-3.232-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.378.288-2.396.654-3.232a4.99 4.99 0 011.153-1.772A4.99 4.99 0 015.65.917c.836-.366 1.854-.592 3.232-.654C10.354 2.012 10.734 2 12 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010 6z">
+                            </path>
+                        </svg>
                     </a>
                     <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6.98a7.085 7.085 0 01-2.023.555 3.513 3.513 0 001.528-1.947 7.089 7.089 0 01-2.247.854 3.545 3.545 0 00-6.075 3.23 10.07 10.07 0 01-7.3-3.714 3.548 3.548 0 001.096 4.721A3.504 3.504 0 012 9.878v.044a3.544 3.544 0 002.83 3.461 3.51 3.51 0 01-.933.125 3.565 3.565 0 01-.664-.064 3.548 3.548 0 003.3 2.464 7.098 7.098 0 01-4.39 1.517 7.218 7.218 0 01-.849-.049 10.057 10.057 0 005.434 1.597c6.51 0 10.063-5.385 10.063-10.063 0-.153-.003-.305-.01-.456a7.197 7.197 0 001.76-1.826z"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22 6.98a7.085 7.085 0 01-2.023.555 3.513 3.513 0 001.528-1.947 7.089 7.089 0 01-2.247.854 3.545 3.545 0 00-6.075 3.23 10.07 10.07 0 01-7.3-3.714 3.548 3.548 0 001.096 4.721A3.504 3.504 0 012 9.878v.044a3.544 3.544 0 002.83 3.461 3.51 3.51 0 01-.933.125 3.565 3.565 0 01-.664-.064 3.548 3.548 0 003.3 2.464 7.098 7.098 0 01-4.39 1.517 7.218 7.218 0 01-.849-.049 10.057 10.057 0 005.434 1.597c6.51 0 10.063-5.385 10.063-10.063 0-.153-.003-.305-.01-.456a7.197 7.197 0 001.76-1.826z">
+                            </path>
+                        </svg>
                     </a>
                     <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 3H8a5 5 0 00-5 5v8a5 5 0 005 5h8a5 5 0 005-5V8a5 5 0 00-5-5zm3 8a1 1 0 11-2 0 1 1 0 012 0zm-7 7a5 5 0 100-10 5 5 0 000 10zm0-2a3 3 0 110-6 3 3 0 010 6z"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16 3H8a5 5 0 00-5 5v8a5 5 0 005 5h8a5 5 0 005-5V8a5 5 0 00-5-5zm3 8a1 1 0 11-2 0 1 1 0 012 0zm-7 7a5 5 0 100-10 5 5 0 000 10zm0-2a3 3 0 110-6 3 3 0 010 6z">
+                            </path>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -717,11 +990,14 @@
         <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm">
             <p>&copy; 2025 Dolphin Spa. All rights reserved.</p>
             <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="privacyPolicyLink">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                    data-i18n="privacyPolicyLink">Privacy Policy</a>
                 <span class="text-gray-600">|</span>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="termsOfServiceLink">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                    data-i18n="termsOfServiceLink">Terms of Service</a>
                 <span class="text-gray-600">|</span>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200" data-i18n="sitemapLink">Sitemap</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200"
+                    data-i18n="sitemapLink">Sitemap</a>
             </div>
         </div>
     </footer>
@@ -730,7 +1006,9 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('alertModal')">&times;</span>
             <p id="alertMessage" class="text-lg text-gray-800 mb-6"></p>
-            <button class="px-6 py-3 btn-gradient text-white font-semibold rounded-full focus:outline-none focus:ring-2 focus:ring-[#7d7936]" onclick="closeModal('alertModal')">OK</button>
+            <button
+                class="px-6 py-3 btn-gradient text-white font-semibold rounded-full focus:outline-none focus:ring-2 focus:ring-[#7d7936]"
+                onclick="closeModal('alertModal')">OK</button>
         </div>
     </div>
 
@@ -739,8 +1017,12 @@
             <span class="close-button" onclick="closeModal('confirmModal')">&times;</span>
             <p id="confirmMessage" class="text-lg text-gray-800 mb-6"></p>
             <div class="flex justify-center space-x-4">
-                <button class="px-6 py-3 btn-gradient text-white font-semibold rounded-full focus:outline-none focus:ring-2 focus:ring-[#7d7936]" id="confirmYes">Yes</button>
-                <button class="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-full hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500" id="confirmNo">No</button>
+                <button
+                    class="px-6 py-3 btn-gradient text-white font-semibold rounded-full focus:outline-none focus:ring-2 focus:ring-[#7d7936]"
+                    id="confirmYes">Yes</button>
+                <button
+                    class="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-full hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    id="confirmNo">No</button>
             </div>
         </div>
     </div>
@@ -945,11 +1227,11 @@
             document.getElementById('confirmMessage').textContent = message;
             document.getElementById('confirmModal').classList.add('show');
 
-            document.getElementById('confirmYes').onclick = function() {
+            document.getElementById('confirmYes').onclick = function () {
                 closeModal('confirmModal');
                 callback(true);
             };
-            document.getElementById('confirmNo').onclick = function() {
+            document.getElementById('confirmNo').onclick = function () {
                 closeModal('confirmModal');
                 callback(false);
             };
@@ -1055,9 +1337,9 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             // Define your API endpoint here.
-
             const BASE_API_URL = "https://goodspa.onrender.com"; // example
             fetch(`${BASE_API_URL}/booking_spa12`)
+            // Base URL for both bookings and testimonials
 
             // Bookings API abstraction
             const BookingsAPI = {
@@ -1066,7 +1348,7 @@
                     let responseText;
                     try {
                         response = await fetch(`${BASE_API_URL}/booking_spa12`);
-                        
+
                         // --- START New Logging for Debugging ---
                         responseText = await response.text(); // Read response as text
                         console.log('Raw response from backend (GET booking_spa12):', responseText);
@@ -1078,7 +1360,7 @@
                             showAlert(`Failed to load bookings from server. Server responded with status ${response.status}. Please check backend logs and ensure data is valid JSON. Response: ${responseText}`);
                             throw new Error(`HTTP error! status: ${response.status}`);
                         }
-                        
+
                         let data;
                         try {
                             data = JSON.parse(responseText); // Try parsing the text
@@ -1267,8 +1549,8 @@
                 { name: "Traditional Khmer Massage 60mins + Deep Tissue Therapy 60mins", prices: [{ duration: "120min", amount: "$25" }], description: "A luxurious facial treatment using heated volcanic stones to soothe muscles, improve circulation, and promote deep relaxation, leaving your skin radiant and refreshed.", image: "https://i.postimg.cc/52PmBrMy/Untitled-design-3.png", therapyNames: [" ", "Duong", "Sali", "Rozy", "SreyNeth", "SreyOun"] },
                 { name: "Traditional Khmer Massage 60mins + Hot Stone Therapy 90mins", prices: [{ duration: "150min", amount: "$34" }], description: "Rejuvenate your skin with our detoxifying Himalayan Salt Scrub. This treatment exfoliates and nourishes, removing dead skin cells and leaving your skin smooth, soft, and glowing.", image: "https://i.postimg.cc/MTYHBhhr/Untitled-design-4.png", therapyNames: [" ", "Duong", "Sali", "Rozy", "SreyNeth", "SreyOun"] },
                 { name: "Traditional Khmer Massage 60mins + Warm Compression 90mins", prices: [{ duration: "150min", amount: "$35" }], description: "An ancient Ayurvedic therapy where warm herbal oil is continuously poured over the forehead, calming the nervous system, reducing stress, and promoting deep relaxation and mental clarity.", image: "https://i.postimg.cc/HL9dvbBr/Untitled-design-5.png", therapyNames: [" ", "Duong", "Sali", "Rozy", "SreyNeth", "SreyOun"] }
-                
-    
+
+
             ];
 
             let selectedService = null;
@@ -1281,7 +1563,7 @@
             const mobileMenu = document.getElementById('menuListMobile');
 
             // Function to show a specific section and hide others
-            window.showSection = function(sectionId) {
+            window.showSection = function (sectionId) {
                 sections.forEach(section => {
                     section.classList.add('hidden');
                 });
@@ -1376,14 +1658,14 @@
             };
 
             // Toggle mobile menu visibility
-            window.toggleMenu = function() {
+            window.toggleMenu = function () {
                 mobileMenu.classList.toggle('hidden');
                 mobileMenu.classList.toggle('flex-col'); // Add flex-col for vertical stacking
                 // The absolute positioning is already in CSS for mobileMenu
             };
 
             // Toggle mobile sub-menu visibility
-            window.toggleMobileSubmenu = function(event, submenuId) {
+            window.toggleMobileSubmenu = function (event, submenuId) {
                 event.stopPropagation(); // Prevent the main nav link click from firing
                 const submenu = document.getElementById(submenuId);
                 submenu.classList.toggle('show');
@@ -1457,11 +1739,11 @@
 
                 // In the service detail, we don't display a therapy selection combobox anymore
                 // The `selectedTherapyName` will be set to null here, and only populated in the booking form.
-                selectedTherapyName = null; 
+                selectedTherapyName = null;
 
                 // Add event listener for radio buttons to update selectedDuration
                 document.querySelectorAll('input[name="serviceDuration"]').forEach(radio => {
-                    radio.addEventListener('change', function() {
+                    radio.addEventListener('change', function () {
                         selectedDuration = {
                             duration: this.value,
                             amount: this.dataset.price
@@ -1473,7 +1755,7 @@
             }
 
             // Handle booking form submission
-            document.getElementById('bookingForm').addEventListener('submit', async function(event) { // Added async here
+            document.getElementById('bookingForm').addEventListener('submit', async function (event) { // Added async here
                 event.preventDefault();
                 const name = document.getElementById('name').value;
                 const phone = document.getElementById('phone').value;
@@ -1499,7 +1781,7 @@
                     const finalTherapyName = therapyNameInput && !therapyNameInput.closest('#therapyNameGroup').classList.contains('hidden') ? therapyNameInput.value : null;
 
 
-                    showConfirm(`${translations[currentLang].confirmBookingPrefix} ${selectedService.name}${finalTherapyName ? ' - ' + finalTherapyName : ''} (${selectedDuration.duration}) ${translations[currentLang].confirmBookingOn} ${new Date(datetime).toLocaleString()}?`, async function(response) { // Added async here
+                    showConfirm(`${translations[currentLang].confirmBookingPrefix} ${selectedService.name}${finalTherapyName ? ' - ' + finalTherapyName : ''} (${selectedDuration.duration}) ${translations[currentLang].confirmBookingOn} ${new Date(datetime).toLocaleString()}?`, async function (response) { // Added async here
                         if (response) {
                             try {
                                 const newBooking = {
@@ -1521,7 +1803,7 @@
                                 document.getElementById('bookingForm').reset();
                                 showSection('viewBookingsSection'); // Navigate to view bookings
                                 renderBookings(); // Re-render the list to show the new booking
-                                
+
                             } catch (error) {
                                 console.error('Error during booking confirmation:', error);
                                 // showAlert is already called by BookingsAPI.add on error
@@ -1568,9 +1850,9 @@
 
                 // Add event listeners for cancel buttons
                 bookingList.querySelectorAll('button').forEach(button => {
-                    button.addEventListener('click', function() {
+                    button.addEventListener('click', function () {
                         const bookingId = this.dataset.id; // Use data-id for actual ID from DB
-                        showConfirm(translations[currentLang].confirmCancelBooking || 'Are you sure you want to cancel this booking?', async function(response) { // Added async here
+                        showConfirm(translations[currentLang].confirmCancelBooking || 'Are you sure you want to cancel this booking?', async function (response) { // Added async here
                             if (response) {
                                 try {
                                     await BookingsAPI.cancel(bookingId); // Call API to cancel booking
@@ -1603,7 +1885,7 @@
 
             // New function to delete a review
             async function deleteReview(reviewId) {
-                showConfirm(translations[currentLang].confirmDeleteReview || 'Are you sure you want to delete this review?', async function(response) {
+                showConfirm(translations[currentLang].confirmDeleteReview || 'Are you sure you want to delete this review?', async function (response) {
                     if (response) {
                         try {
                             await TestimonialsAPI.delete(reviewId);
@@ -1643,7 +1925,7 @@
                 const overallRatingDisplay = document.getElementById('overallRatingDisplay');
                 const totalReviewsCountSpan = document.getElementById('totalReviewsCount'); // Used for the first number in the sentence
                 const numReviewsSpan = document.getElementById('numReviews'); // Used for the second number in the sentence
-                
+
                 const barExcellent = document.getElementById('barExcellent');
                 const percentExcellent = document.getElementById('percentExcellent');
                 const barVeryGood = document.getElementById('barVeryGood');
@@ -1660,7 +1942,7 @@
                 reviewsList.innerHTML = ''; // Clear previous reviews
                 let totalRating = 0;
                 let ratingCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-                
+
                 if (reviews.length === 0) {
                     noReviewsMessage.classList.remove('hidden');
                     overallRatingDisplay.textContent = '0.0';
@@ -1691,7 +1973,7 @@
                     const reviewCard = document.createElement('div');
                     reviewCard.className = 'bg-[#fcfbfb] p-6 rounded-lg shadow-inner text-left relative'; // Added relative for button positioning
                     const createdAtDate = review.created_at ? new Date(review.created_at).toLocaleDateString() : 'N/A'; // Use created_at from PostgreSQL
-                    
+
                     reviewCard.innerHTML = `
                         <h4 class="text-xl font-semibold text-[#545120] mb-1">${review.review_title || 'No Title'}</h4>
                         <div class="text-yellow-500 mb-2">
@@ -1704,7 +1986,7 @@
                         </button>
                     `;
                     // Add event listener to the delete button
-                    reviewCard.querySelector('button').addEventListener('click', function() {
+                    reviewCard.querySelector('button').addEventListener('click', function () {
                         const reviewId = this.dataset.reviewId;
                         deleteReview(reviewId);
                     });
@@ -1757,12 +2039,12 @@
 
             // Event listeners for navigation
             document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', function(event) {
+                tab.addEventListener('click', function (event) {
                     // Check if it's a mobile submenu toggle
                     if (this.parentElement.classList.contains('flex') && this.parentElement.querySelector('.mobile-dropdown-toggle')) {
                         // This specific 'Services' or 'About Us' link in mobile should not trigger a section change directly
                         // The toggleMobileSubmenu is attached to the parent div
-                        return; 
+                        return;
                     }
 
                     event.preventDefault(); // Prevent default anchor behavior
@@ -1772,7 +2054,7 @@
             });
 
             // Event listener for "Explore Services" button on Hero section
-            document.querySelector('#homeSection button').addEventListener('click', function() {
+            document.querySelector('#homeSection button').addEventListener('click', function () {
                 showSection('servicesSection');
             });
 
@@ -1869,7 +2151,7 @@
             updateContent();
 
             // Review Form Submission
-            document.getElementById('reviewForm').addEventListener('submit', function(event) {
+            document.getElementById('reviewForm').addEventListener('submit', function (event) {
                 event.preventDefault();
                 const reviewerName = document.getElementById('reviewerName').value;
                 const reviewerEmail = document.getElementById('reviewerEmail').value;
@@ -1901,4 +2183,5 @@
         });
     </script>
 </body>
+
 </html>
