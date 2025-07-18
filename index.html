@@ -1055,7 +1055,9 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             // Define your API endpoint here.
-            const BASE_API_URL = 'http://localhost:3000'; // Base URL for both bookings and testimonials
+
+            const BASE_API_URL = "https://goodspa.onrender.com"; // example
+            fetch(`${BASE_API_URL}/booking_spa12`)
 
             // Bookings API abstraction
             const BookingsAPI = {
